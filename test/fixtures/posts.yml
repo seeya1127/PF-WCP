@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  post_image: MyText
+  text: MyText
+  place: 1
+  genre: 1
+
+two:
+  post_image: MyText
+  text: MyText
+  place: 1
+  genre: 1
