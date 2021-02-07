@@ -6,5 +6,32 @@
 <h4>投稿内容</h4>
   <%= @post.text %>
 
+<% if @post.user == current_user %>
 <p><%= link_to "edit", edit_post_path(@post.id) %></p>
 <p><%= link_to "destroy", post_path(@post.id), method: :delete, data: {confirm:'本当に削除しますか？'} %></p>
+<% end %>
+
+<% if current_user.favorited_by?(@post.id) %>
+    <P><%= link_to "♥", post_favorites_path(@post), method: :delete %></P>
+   <% else %>
+    <P><%= link_to "♡", post_favorites_path(@post), method: :post %></P>
+  <% end %>
+
+<h4>コメント</h4>
+<% @comments.each do |comment| %>
+
+  <p><%= comment.comment_text %></p>
+
+    <% if comment.user == current_user %>
+    <P><%= link_to "destroy", post_comments_path(post_id: comment.post, id: comment.id), method: :delete, data: {confirm:'本当に削除しますか？'} %></P>
+    <% end %>
+
+<% end %>
+
+<%= form_with(model:[@post,@comment], method: :post) do |f| %>
+
+  <%= f.text_field :comment_text %>
+
+  <%= f.submit 'create comment' %>
+
+<% end %>
