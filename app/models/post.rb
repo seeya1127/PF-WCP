@@ -1,7 +1,8 @@
 class Post < ApplicationRecord
-  has_many :comment
-  has_many :favorite
-  has_many :tag
+  has_many :comments
+  has_many :favorites
+  has_many :tags
+  belongs_to :user
 
   attachment :post_image
 end
