@@ -1,0 +1,25 @@
+<%= form_with model: @post, local:true do |f| %>
+<h2>New Post</h2>
+
+<h4>画像</h4>
+<%= f.attachment_field :post_image, class: "input" %>
+<h4>本文</h4>
+<%= f.text_field :text %>
+
+<%= f.submit '投稿' %>
+
+<% end %>
+
+
+<h4>投稿一覧</h4>
+<% @posts.each do |post| %>
+
+  <%= link_to post_path(post.id) do %>
+  <%= attachment_image_tag post, :post_image, class: "post_image" %>
+  <% end %>
+
+<%= post.text %>
+
+<% end %>
+
+

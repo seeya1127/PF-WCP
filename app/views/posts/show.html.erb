@@ -1,0 +1,10 @@
+<h2>投稿詳細</h2>
+
+<h4>画像</h4>
+  <%= attachment_image_tag @post, :post_image, class: "post_image" %>
+
+<h4>投稿内容</h4>
+  <%= @post.text %>
+
+<p><%= link_to "edit", edit_post_path(@post.id) %></p>
+<p><%= link_to "destroy", post_path(@post.id), method: :delete, data: {confirm:'本当に削除しますか？'} %></p>
