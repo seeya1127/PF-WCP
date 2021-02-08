@@ -10,7 +10,13 @@ class User < ApplicationRecord
   has_many :chats, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  def favorited_by?(post_id)
-    favorites.where(post_id: post_id).exists?
+  has_many :active_relationships, class_name: 'Relationship', foreign_key: :followed_id
+  has_many :follows, through: :active_relationships, source: :follower
+
+  has_many :passive_relationships, class_name: 'Relationship', foreign_key: :follower_id
+  has_many :followers, through: :passive_relationships, source: :followed
+
+  def followed_by?(user)
+    passive_relationships.find_by(followed_id: user.id).present?
   end
 end

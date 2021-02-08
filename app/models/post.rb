@@ -5,4 +5,8 @@ class Post < ApplicationRecord
   belongs_to :user
 
   attachment :post_image
+
+  def favorited_by?(user_id)
+    favorites.where(user_id: user.id).exists?
+  end
 end
