@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'relationships/create'
-  get 'relationships/destroy'
   root to: 'homes#top'
 resources :posts do
   resource :favorites, only: [:create, :destroy]
@@ -18,6 +16,9 @@ resources :users do
   get :follows, on: :member
   get :followers, on: :member
 end
+
+get "chat/:id" => "chats#show", as: "chat"
+resources :chats, only: [:create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end
