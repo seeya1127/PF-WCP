@@ -10,6 +10,8 @@
   <% else %>
     <p><%= link_to "フォローする", user_relationships_path(@user.id), method: :post %></p>
   <% end %>
+
+  <%= link_to "チャットする", chat_path(@user.id) %>
 <% end %>
 
 <h2>ユーザーの投稿</h2>
