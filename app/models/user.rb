@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :chats
   has_many :rooms, through: :user
   has_many :favorites, dependent: :destroy
-
+  
   has_many :active_relationships, class_name: 'Relationship', foreign_key: :followed_id
   has_many :follows, through: :active_relationships, source: :follower
 

@@ -4,13 +4,12 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def create
-
-  end
-
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.reverse_order
+  end
+
+  def edit
   end
 
   def update
