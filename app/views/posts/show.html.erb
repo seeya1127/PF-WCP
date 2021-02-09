@@ -35,3 +35,11 @@
   <%= f.submit 'create comment' %>
 
 <% end %>
+
+<h4>タグリスト</h4>
+<% @post_tags.each do |tag| %>
+<span>
+  <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>
+  <%= "(#{tag.posts.count})" %>
+</span>
+<% end %>

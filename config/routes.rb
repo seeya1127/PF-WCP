@@ -10,7 +10,7 @@ devise_for :users, controllers: {
     registrations: "users/registrations",
     passwords: "users/passwords",
   }
-  
+
 resources :users do
   resource :relationships, only: [:create, :destroy]
   get :follows, on: :member
@@ -19,6 +19,10 @@ end
 
 get "chat/:id" => "chats#show", as: "chat"
 resources :chats, only: [:create]
+
+resources :tags do
+  get "posts", to: "posts#search"
+end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end

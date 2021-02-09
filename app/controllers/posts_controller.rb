@@ -1,19 +1,22 @@
 class PostsController < ApplicationController
   def index
+    @tag_list = Tag.all
     @posts = Post.all
-    @post = Post.new
+    @post = current_user.posts.new
   end
 
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments
     @comment = current_user.comments.new
+    @post_tags = @post.tags
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @post = current_user.posts.new(post_params)
+    tag_list = params[:post][:tag_name].split(nil)
     if @post.save
+      @post.save_tag(tag_list)
       redirect_to request.referer
     else
       render "index"
@@ -34,6 +37,12 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.update(post_params)
     redirect_to posts_path
+  end
+
+  def search
+    @tag_list = Tag.all
+    @tag = Tag.find(params[:tag_id])
+    @posts = @tag.posts.all
   end
 
   private
