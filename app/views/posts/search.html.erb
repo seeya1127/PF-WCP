@@ -1,0 +1,18 @@
+<h2>投稿一覧</h2>
+
+<% @tag_list.each do |list| %>
+<span>
+  <%= link_to list.tag_name, tag_posts_path(post_tag_id: list.id)%>
+  <%= "(#{list.posts.count})" %>
+</span>
+<% end %>
+
+<%= "タグがー" %>
+<strong><%= "#{@tag.tag_name}" %></strong>
+<%= "ーの投稿一覧" %>
+
+<% @posts.each do |post| %>
+
+<%= link_to post.text, post %>
+
+<% end %>
