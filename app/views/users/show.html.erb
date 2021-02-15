@@ -2,6 +2,8 @@
 
 <%= @user.name %>
 
+<%= @user.introduction %>
+
 <%= attachment_image_tag @user, :profile_image, size: "40x40" %>
 
 <% if current_user != @user %>
@@ -13,6 +15,10 @@
 
   <%= link_to "チャットする", chat_path(@user.id) %>
 <% end %>
+
+<% if @user == current_user %>
+     <%= link_to "edit", edit_user_path(@user.id) %>
+    <% end %>
 
 <h2>ユーザーの投稿</h2>
 <% @posts.each do |post| %>

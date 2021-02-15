@@ -1,7 +1,9 @@
 class FavoritesController < ApplicationController
   def create
-    favorite = current_user.favorites.new(post_id: params[:post_id])
-    favorite.save
+    unless current_user.favorites.find_by(post_id: params[:post_id])
+      favorite = current_user.favorites.new(post_id: params[:post_id])
+      favorite.save
+    end
     redirect_to request.referer
   end
 

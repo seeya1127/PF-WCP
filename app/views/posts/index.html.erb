@@ -6,6 +6,24 @@
 <h4>本文</h4>
 <%= f.text_field :text %>
 
+  <div class="col-md-12">
+    <%= f.radio_button :place_option, "0", checked: true %>
+    <%= f.label :place, "お家" %><br>
+  </div>
+  <div class="col-md-12">
+    <%= f.radio_button :place_option, "1" %>
+    <%= f.label :place, "お店" %></br>
+  </div>
+  
+  <div class="new">
+    <div class="col-md-12 order-type-c">
+      <div class="form-group row">
+          <label class="col-sm-3 control-label">住所</label>
+          <div class="col-sm-4">
+            <%= f.text_field :address, class: "form-control" %>
+          </div>
+     </div>
+
 <P><%= "" %>
 <%= "" %>
 <%= f.text_field :tag_name %></P>
@@ -32,23 +50,30 @@
 
 
     <% @posts.each do |post| %>
-        <div class="card">
+        <div class="card" style="width: 18rem;">
           <div class="card-image">
-            <!--<figure class="image is-4by3">-->
+            <figure class="image is-4by3">
               <%= link_to post_path(post.id) do %>
-              <%= attachment_image_tag post, :post_image, class: "post_image" %>
+              <%= attachment_image_tag post, :post_image, :fill, 60, 60, class: "post_image", class:"mt-3 rounded-circle" %>
 
-            <!--</figure>-->
+            </figure>
           </div>
             <p class="card-text">
             <%= post.text %>
             <% end %>
             </p>
-            <% if post.favorited_by?(current_user) %>
-              <P><%= link_to "♥︎", post_favorites_path(post), method: :delete %></P>
-             <% else %>
-              <P><%= link_to "♡︎", post_favorites_path(post), method: :post %></P>
-            <% end %>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <% if post.favorited_by?(current_user) %>
+              <P><%= link_to "♥", post_favorites_path(post), method: :delete %></P>
+                <% else %>
+              <P><%= link_to "♡", post_favorites_path(post), method: :post %></P>
+                <% end %>
+              <li class="list-group-item">
+
+              </li>
+            </li>
+            </ul>
           <% end %>
           </div>
 </div>
