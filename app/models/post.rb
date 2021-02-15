@@ -7,7 +7,7 @@ class Post < ApplicationRecord
 
   attachment :post_image
 
-  def favorited_by?(user_id)
+  def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
 
@@ -24,6 +24,11 @@ class Post < ApplicationRecord
      new_post_tag = Tag.find_or_create_by(tag_name: new)
      self.tags << new_post_tag
    end
-
   end
+  
+  enum place: {
+    お家: 0,
+    お店: 1,
+  }
+  
 end
