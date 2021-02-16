@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+
+    <div class="col-md-8">
+    <%= form_with model: @post, local:true, multipart: true do |f| %>
+    <h2>New Post</h2>
+
+    <h4>画像</h4>
+    <%= f.attachment_field :post_image, class: "input" %>
+    <h4>本文</h4>
+    <%= f.text_field :text, class: "col-md-12" %><br>
+
+        <%= f.radio_button :place_option, "0", checked: true %>
+        <%= f.label :place, "お家" %><br>
+
+        <%= f.radio_button :place_option, "1" %>
+        <%= f.label :place, "お店" %></br>
+
+        <label class="col-sm-3 control-label">住所</label>
+
+    <h4>タグ</h4>
+    <P><%= "" %>
+    <%= "" %>
+    <%= f.text_field :tag_name, class: "col-md-12" %></P>
+
+    <%= f.submit '投稿', class: "col-md-12" %>
+
+    <% end %>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>

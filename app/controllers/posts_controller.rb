@@ -1,4 +1,9 @@
 class PostsController < ApplicationController
+
+  def new
+    @post = current_user.posts.new
+  end
+
   def index
     @tag_list = Tag.all
     @posts = Post.all
@@ -17,7 +22,7 @@ class PostsController < ApplicationController
     tag_list = params[:post][:tag_name].split(nil)
     if @post.save
       @post.save_tag(tag_list)
-      redirect_to request.referer
+      redirect_to posts_path
     else
       render "index"
     end
