@@ -1,0 +1,7 @@
+<%= form_with(model:[post,comment], method: :post) do |f| %>
+
+  <%= f.text_field :comment_text %>
+
+  <%= f.submit 'create comment' %>
+
+<% end %>

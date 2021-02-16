@@ -4,6 +4,8 @@ class Post < ApplicationRecord
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps, dependent: :destroy
   belongs_to :user
+#   has_one :spot, dependent: :destroy
+  # accepts_nested_attbute_for :spot
 
   attachment :post_image
 
@@ -25,10 +27,10 @@ class Post < ApplicationRecord
      self.tags << new_post_tag
    end
   end
-  
+
   enum place: {
     お家: 0,
     お店: 1,
   }
-  
+
 end
