@@ -11,30 +11,14 @@
 <p><%= link_to "destroy", post_path(@post.id), method: :delete, data: {confirm:'本当に削除しますか？'} %></p>
 <% end %>
 
-<% if @post.favorited_by?(current_user) %>
-    <P><%= link_to "♥", post_favorites_path(@post), method: :delete %></P>
-   <% else %>
-    <P><%= link_to "♡", post_favorites_path(@post), method: :post %></P>
-  <% end %>
+<%= render 'favorites/favorite', post: @post %>
 
 <h4>コメント</h4>
-<% @comments.each do |comment| %>
 
-  <p><%= comment.comment_text %></p>
+<%= render 'comments/comment', comment: @comments %>
 
-    <% if comment.user == current_user %>
-    <P><%= link_to "destroy", post_comments_path(post_id: comment.post, id: comment.id), method: :delete, data: {confirm:'本当に削除しますか？'} %></P>
-    <% end %>
-
-<% end %>
-
-<%= form_with(model:[@post,@comment], method: :post) do |f| %>
-
-  <%= f.text_field :comment_text %>
-
-  <%= f.submit 'create comment' %>
-
-<% end %>
+<h4>コメント一覧</h4>
+<%= render 'comments/form', post: @post, comment: @comment %>
 
 <h4>タグリスト</h4>
 <% @post_tags.each do |tag| %>

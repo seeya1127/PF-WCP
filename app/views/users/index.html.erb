@@ -4,7 +4,7 @@
 
 <%= user.name %>
 
-<%= attachment_image_tag user.profile_image, size: "40x40" %>
+<%= attachment_image_tag user, :profile_image %>
 
 <%= link_to "show", user_path(user.id) %>
 
