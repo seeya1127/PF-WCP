@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   def new
     @post = current_user.posts.new
+    @post.build_spot
   end
 
   def index
@@ -15,6 +16,10 @@ class PostsController < ApplicationController
     @comments = @post.comments
     @comment = current_user.comments.new
     @post_tags = @post.tags
+    @lat = @post.spot.latitude
+    @lng = @post.spot.longitude
+    gon.lat = @lat
+    gon.lng = @lng
   end
 
   def create
@@ -52,6 +57,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:user_id, :post_image, :text, :place, :genre)
+    params.require(:post).permit(:user_id, :post_image, :text, :place, :genre, spot_attributes: [:address])
   end
 end

@@ -4,8 +4,8 @@ class Post < ApplicationRecord
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps, dependent: :destroy
   belongs_to :user
-#   has_one :spot, dependent: :destroy
-  # accepts_nested_attbute_for :spot
+  has_one :spot, dependent: :destroy
+  accepts_nested_attributes_for :spot
 
   attachment :post_image
 
