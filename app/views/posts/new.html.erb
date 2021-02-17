@@ -18,6 +18,13 @@
         <%= f.label :place, "お店" %></br>
 
         <label class="col-sm-3 control-label">住所</label>
+        <%= f.fields_for :spot do |s| %>
+
+           <%= s.text_field :address, id: "address", class: "col-md-12" %>
+           <input onclick="codeAddress()", type="button", value="検索する" %></input>
+           <div id="map" style="height: 320px; width: 400px;"></div>
+
+        <% end %>
 
     <h4>タグ</h4>
     <P><%= "" %>
