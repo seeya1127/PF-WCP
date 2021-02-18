@@ -12,9 +12,11 @@
         </p>
         <p class="card-text">
           <%= @user.introduction %>
+          <div>フォロー<%= link_to @user.follows.count, follows_user_path(@user) %>名</div>
+          <div>フォロワー<%= link_to @user.followers.count, followers_user_path(@user) %>名</div>
         </p>
       </div>
-        
+
       <% if current_user != @user %>
         <%= render 'follow', user: @user %>
         <%= link_to "チャットする", chat_path(@user.id) %>
