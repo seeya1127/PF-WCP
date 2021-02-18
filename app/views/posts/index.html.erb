@@ -1,4 +1,4 @@
-
+<div class="container">
 <h4>タグリスト</h4>
 <% @tag_list.each do |list| %>
 <span>
@@ -8,15 +8,15 @@
 <% end %>
 
 <div class="title">
-  <div class="container">
     <h4>投稿一覧</h4>
-  </div>
 </div>
 
-<div class="container">
+
+  <div class="row">
 <% @posts.each do |post| %>
-
+<div class="col-md-3">
  <%= render 'post', post: post %>
-
+</div>
 <% end %>
+  </div>
 </div>

@@ -78,3 +78,4 @@ gem "geocoder"
 gem "gon"
 
 gem "pry-byebug"
+gem 'kaminari', '~> 0.17.0'

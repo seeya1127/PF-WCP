@@ -13,6 +13,6 @@
 
 <% @posts.each do |post| %>
 
-<%= link_to post.text, post %>
+<%= render 'post', post: post %>
 
 <% end %>
