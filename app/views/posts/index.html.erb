@@ -1,54 +1,33 @@
-<%= form_with model: @post, local:true do |f| %>
-<h2>New Post</h2>
-
-<h4>画像</h4>
-<%= f.attachment_field :post_image, class: "input" %>
-<h4>本文</h4>
-<%= f.text_field :text %>
-
-<P><%= "" %>
-<%= "" %>
-<%= f.text_field :tag_name %></P>
-
-<%= f.submit '投稿' %>
-
-<% end %>
-
+<div class="container">
 <h4>タグリスト</h4>
+
 <% @tag_list.each do |list| %>
-<span>
-  <%= link_to list.tag_name, tag_posts_path(tag_id: list.id) %>
-  <%= "(#{list.posts.count})" %>
-</span>
+  <% if list.posts.count >= 1 %>
+  <span>
+    <%= link_to list.tag_name, tag_posts_path(tag_id: list.id) %>
+    <%= "(#{list.posts.count})" %>
+  </span>
+  <% end %>
 <% end %>
 
 <div class="title">
-  <div class="container">
     <h4>投稿一覧</h4>
-  </div>
 </div>
 
-<div class="container">
 
+  <div class="row">
+<% @home_posts.each do |post| %>
+<div class="col-md-3">
+ <%= render 'post', post: post %>
+</div>
+<% end %>
+  </div>
 
-    <% @posts.each do |post| %>
-        <div class="card">
-          <div class="card-image">
-            <!--<figure class="image is-4by3">-->
-              <%= link_to post_path(post.id) do %>
-              <%= attachment_image_tag post, :post_image, class: "post_image" %>
-
-            <!--</figure>-->
-          </div>
-            <p class="card-text">
-            <%= post.text %>
-            <% end %>
-            </p>
-            <% if post.favorited_by?(current_user) %>
-              <P><%= link_to "♥︎", post_favorites_path(post), method: :delete %></P>
-             <% else %>
-              <P><%= link_to "♡︎", post_favorites_path(post), method: :post %></P>
-            <% end %>
-          <% end %>
-          </div>
+  <div class="row">
+<% @shop_posts.each do |post| %>
+<div class="col-md-3">
+ <%= render 'post', post: post %>
+</div>
+<% end %>
+  </div>
 </div>

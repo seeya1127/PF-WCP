@@ -1,0 +1,7 @@
+<div id='post_<%= post.id %>'>
+<% if post.favorited_by?(current_user) %>
+    <P><%= link_to "" ,post_favorites_path(post), method: :delete, remote: true, class:"fas fa-heart heart" %><%= post.favorites.count %></P>
+   <% else %>
+    <P><%= link_to "" ,post_favorites_path(post), method: :post, remote: true, class:"fas fa-heart heart_red" %><%= post.favorites.count %></P>
+<% end %>
+</div>

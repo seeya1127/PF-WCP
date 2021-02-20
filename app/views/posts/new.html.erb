@@ -1,0 +1,41 @@
+<div class="container" style="padding-top:15px">
+  <div class="row">
+    <div class="col-md-2"></div>
+
+    <div class="shadow-lg col-md-8" style="padding:10px">
+      <!--<div class="shadow-lg card" style="padding:15px">-->
+    <%= form_with model: @post, local:true, multipart: true do |f| %>
+    <h2>New Post</h2>
+
+    <h4>画像</h4>
+    <%= f.attachment_field :post_image, class: "input" %>
+    <h4>本文</h4>
+    <%= f.text_field :text, class: "col-md-12" %><br>
+
+        <%= f.radio_button :place_option, "0", checked: true %>
+        <%= f.label :place, "お家" %><br>
+
+        <%= f.radio_button :place_option, "1" %>
+        <%= f.label :place, "お店" %></br>
+
+    <h4>住所</h4>
+        <%= f.fields_for :spot do |s| %>
+
+           <%= s.text_field :address, id: "address", class: "col-md-12" %>
+           <input onclick="codeAddress()", type="button", value="検索する", class="btn btn-primary" %></input>
+           <div id="map" style="height: 250px; width: mx-auto;"></div>
+
+        <% end %>
+
+    <h4>タグ</h4>
+    <P>
+    <%= f.text_field :tag_name, class: "col-md-12" %></P>
+
+    <%= f.submit '投稿', class: "col-md-12 btn btn-primary" %>
+
+    <% end %>
+    </div>
+    <div class="col-md-2"></div>
+  <!--</div>-->
+  </div>
+</div>

@@ -1,10 +1,36 @@
-<h2>ユーザー一覧</h2>
-
-<% @users.each do |user| %>
-
-<%= user.name %>
-
-<%= attachment_image_tag user.profile_image, size: "40x40" %>
-
-<%= link_to "show", user_path(user.id) %>
-<% end %>
+<h4>ユーザー一覧</h4>
+<div class="container-md" style="margin-top:15px">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-borderless">
+            	<tbody>
+            		<tr>
+            			<th>#</th>
+            			<th>Image</th>
+            			<th>Name</th>
+            			<th>Introduction</th>
+            			<th></th>
+            			<th></th>
+            			<th></th>
+            		</tr>
+            		<% @users.each do |user| %>
+            		<tr>
+            		    <td><%= user.id %></td>
+            			<td><%= attachment_image_tag user, :profile_image, size: "30x30", fallback: "no_img.jpg" %></td>
+            			<td><%= user.name %></td>
+            			<td><%= user.introduction %></td>
+            			<% if current_user != user %>
+            			<td><%= render 'follow', user: user %></td>
+                        <td><%= link_to "チャットする", chat_path(user.id), class:"btn btn-info" %></td>
+                        <% else %>
+                        <td></td>
+                        <td></td>
+                        <% end %>
+                		<td><%= link_to "show", user_path(user.id), class:"btn btn-warning" %></td>
+            		</tr>
+            		<% end %>
+            	</tbody>
+            </table>
+        </div>
+    </div>
+</div>

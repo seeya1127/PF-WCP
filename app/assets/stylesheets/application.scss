@@ -13,4 +13,22 @@
  *= require_tree .
  *= require_self
  */
- 
+ #box{
+  height: 600px;
+}
+.test1 {
+  background-image: url(test1.jpg);
+}
+.test2 {
+  background-image: url(test2.jpg);
+}
+.test3 {
+  background-image: url(test3.jpg);
+}
+.test4 {
+  background-image: url(test4.jpg);
+}
+
+.full-page {
+  background-color: #FFFF99;
+}

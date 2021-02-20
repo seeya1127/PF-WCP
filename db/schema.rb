@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_06_110749) do
+ActiveRecord::Schema.define(version: 2021_02_17_112658) do
 
   create_table "chats", force: :cascade do |t|
     t.integer "user_id"
@@ -35,6 +35,21 @@ ActiveRecord::Schema.define(version: 2021_02_06_110749) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "post_id"
+    t.integer "comment_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_notifications_on_comment_id"
+    t.index ["post_id"], name: "index_notifications_on_post_id"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.text "text"
     t.integer "place"
@@ -55,6 +70,15 @@ ActiveRecord::Schema.define(version: 2021_02_06_110749) do
   create_table "rooms", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "spots", force: :cascade do |t|
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "post_id"
   end
 
   create_table "tag_maps", force: :cascade do |t|
@@ -89,10 +113,10 @@ ActiveRecord::Schema.define(version: 2021_02_06_110749) do
     t.string "unconfirmed_email"
     t.text "introduction"
     t.string "prefecture"
-    t.text "profile_image"
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "profile_image_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

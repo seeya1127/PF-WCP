@@ -1,7 +1,14 @@
 class PostsController < ApplicationController
+
+  def new
+    @post = current_user.posts.new
+    @post.build_spot
+  end
+
   def index
     @tag_list = Tag.all
-    @posts = Post.all
+    @home_posts = Post.where(place: 0)
+    @shop_posts = Post.where(place: 1)
     @post = current_user.posts.new
   end
 
@@ -10,6 +17,10 @@ class PostsController < ApplicationController
     @comments = @post.comments
     @comment = current_user.comments.new
     @post_tags = @post.tags
+    @lat = @post.spot.latitude
+    @lng = @post.spot.longitude
+    gon.lat = @lat
+    gon.lng = @lng
   end
 
   def create
@@ -17,7 +28,7 @@ class PostsController < ApplicationController
     tag_list = params[:post][:tag_name].split(nil)
     if @post.save
       @post.save_tag(tag_list)
-      redirect_to request.referer
+      redirect_to posts_path
     else
       render "index"
     end
@@ -47,6 +58,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:user_id, :post_image, :text, :place, :genre)
+    params.require(:post).permit(:user_id, :post_image, :text, :place, :genre, spot_attributes: [:address])
   end
 end

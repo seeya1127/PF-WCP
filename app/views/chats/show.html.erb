@@ -1,13 +1,14 @@
-<div class="container">
+<div class="container" style="margin-top:15px">
     <div class="row">
-        <div class="col-xs-6">
+      <div class="col-3"></div>
+        <div class="col-6">
             <h2 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %> さんとのチャット</h2>
 
-            <table class="message table">
+            <table class="table table-borderless">
               <thead>
                 <tr>
-                  <th style="text-align: left; font-size: 20px;"><%= current_user.name %></th>
-                  <th style="text-align: right; font-size: 20px;"><%= @user.name %></th>
+                  <th style="text-align: left; font-size: 20px;"><%= current_user.name %><%= attachment_image_tag current_user, :profile_image, size: "30x30", fallback: "no_img.jpg" %></th>
+                  <th style="text-align: right; font-size: 20px;"><%= @user.name %><%= attachment_image_tag @user, :profile_image, size: "30x30", fallback: "no_img.jpg" %></th>
                 </tr>
               </thead>
               <% @chats.each do |chat| %>
@@ -38,5 +39,6 @@
               <%= f.hidden_field :room_id %>
             <% end %>
         </div>
+        <div class="col-3"></div>
     </div>
 </div>

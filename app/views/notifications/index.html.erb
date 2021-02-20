@@ -1,0 +1,8 @@
+<% if @notifications.length > 0 %>
+  <% @notifications.each do |notification| %>
+    <%= render "notifications", notification: notification %>
+    <%= paginate @notifications %>
+  <% end %>
+<% else %>
+  <P>通知はありません</P>
+<% end %>
