@@ -1,15 +1,14 @@
-
-<div class="container-md">
+<h4>ユーザー一覧</h4>
+<div class="container-md" style="margin-top:15px">
     <div class="row">
         <div class="col-12">
-            <h4>ユーザー一覧</h4>
-            <table class="table">
+            <table class="table table-borderless">
             	<tbody>
             		<tr>
             			<th>#</th>
-            			<th>ニックネーム</th>
-            			<th>自己紹介</th>
-            			<th></th>
+            			<th>Image</th>
+            			<th>Name</th>
+            			<th>Introduction</th>
             			<th></th>
             			<th></th>
             			<th></th>
@@ -17,14 +16,17 @@
             		<% @users.each do |user| %>
             		<tr>
             		    <td><%= user.id %></td>
-            			<td><%= attachment_image_tag user, :profile_image, size: "30x30" %></td>
+            			<td><%= attachment_image_tag user, :profile_image, size: "30x30", fallback: "no_img.jpg" %></td>
             			<td><%= user.name %></td>
             			<td><%= user.introduction %></td>
             			<% if current_user != user %>
             			<td><%= render 'follow', user: user %></td>
-                        <td><%= link_to "チャットする", chat_path(user.id) %></td>
+                        <td><%= link_to "チャットする", chat_path(user.id), class:"btn btn-info" %></td>
+                        <% else %>
+                        <td></td>
+                        <td></td>
                         <% end %>
-                		<td><%= link_to "show", user_path(user.id) %></td>
+                		<td><%= link_to "show", user_path(user.id), class:"btn btn-warning" %></td>
             		</tr>
             		<% end %>
             	</tbody>

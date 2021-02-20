@@ -1,10 +1,13 @@
 <div class="container">
 <h4>タグリスト</h4>
+
 <% @tag_list.each do |list| %>
-<span>
-  <%= link_to list.tag_name, tag_posts_path(tag_id: list.id) %>
-  <%= "(#{list.posts.count})" %>
-</span>
+  <% if list.posts.count >= 1 %>
+  <span>
+    <%= link_to list.tag_name, tag_posts_path(tag_id: list.id) %>
+    <%= "(#{list.posts.count})" %>
+  </span>
+  <% end %>
 <% end %>
 
 <div class="title">
@@ -13,7 +16,15 @@
 
 
   <div class="row">
-<% @posts.each do |post| %>
+<% @home_posts.each do |post| %>
+<div class="col-md-3">
+ <%= render 'post', post: post %>
+</div>
+<% end %>
+  </div>
+
+  <div class="row">
+<% @shop_posts.each do |post| %>
 <div class="col-md-3">
  <%= render 'post', post: post %>
 </div>
