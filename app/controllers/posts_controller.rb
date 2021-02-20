@@ -7,7 +7,8 @@ class PostsController < ApplicationController
 
   def index
     @tag_list = Tag.all
-    @posts = Post.all
+    @home_posts = Post.where(place: 0)
+    @shop_posts = Post.where(place: 1)
     @post = current_user.posts.new
   end
 

@@ -28,7 +28,8 @@
 </span>
 <% end %>
 
+<% if @post.spot.address? %>
 <h4>Map</h4>
-
     <%= @post.spot.address %>
   <div id="show_map" style="height: 320px; width: 400px;"></div>
+<% end %>

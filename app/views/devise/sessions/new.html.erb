@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container" style="padding-top:50px">
     <div class="row">
       <div class="col-md-3"></div>
-      <div class="col-md-6 form-group">
+      <div class="col-md-6 form-group shadow-lg rounded-lg">
         <h2>Log in</h2>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -17,7 +17,7 @@
                 <%= f.label :remember_me %>
             <% end %><br />
 
-            <%= f.submit "Log in", class: "col-md-12" %>
+            <%= f.submit "Log in", class: "col-md-12 btn btn-primary" %>
             <%= render "devise/shared/links" %>
         <% end %>
       </div>

@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container" style="padding-top:15px">
   <div class="row">
     <div class="col-md-2"></div>
 
-    <div class="col-md-8">
-      <div class="card">
+    <div class="shadow-lg col-md-8" style="padding:10px">
+      <!--<div class="shadow-lg card" style="padding:15px">-->
     <%= form_with model: @post, local:true, multipart: true do |f| %>
     <h2>New Post</h2>
 
@@ -18,11 +18,11 @@
         <%= f.radio_button :place_option, "1" %>
         <%= f.label :place, "お店" %></br>
 
-        <h4 class="col-sm-3 control-label">住所</h4>
+    <h4>住所</h4>
         <%= f.fields_for :spot do |s| %>
 
            <%= s.text_field :address, id: "address", class: "col-md-12" %>
-           <input onclick="codeAddress()", type="button", value="検索する" %></input>
+           <input onclick="codeAddress()", type="button", value="検索する", class="btn btn-primary" %></input>
            <div id="map" style="height: 250px; width: mx-auto;"></div>
 
         <% end %>
@@ -31,11 +31,11 @@
     <P>
     <%= f.text_field :tag_name, class: "col-md-12" %></P>
 
-    <%= f.submit '投稿', class: "col-md-12" %>
+    <%= f.submit '投稿', class: "col-md-12 btn btn-primary" %>
 
     <% end %>
     </div>
     <div class="col-md-2"></div>
-  </div>
+  <!--</div>-->
   </div>
 </div>
