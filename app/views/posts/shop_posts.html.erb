@@ -1,0 +1,10 @@
+<div class="container" style="margin-top:10px">
+<h4>お店での投稿</h4>
+  <div class="row">
+    <% @shop_posts.each do |post| %>
+      <div class="col-md-3">
+    <%= render 'post', post: post %>
+      </div>
+    <% end %>
+  </div>
+</div>

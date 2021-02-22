@@ -83,9 +83,8 @@ class Post < ApplicationRecord
     notification.save if notification.valid?
   end
 
-  enum place: {
-    お家: 0,
-    お店: 1,
-  }
+  enum place: { お家: 0, お店: 1 }
+
+  default_scope -> { order(created_at: :desc) }
 
 end

@@ -6,9 +6,10 @@ class PostsController < ApplicationController
   end
 
   def index
+    @post = Post.all
     @tag_list = Tag.all
-    @home_posts = Post.where(place: 0)
-    @shop_posts = Post.where(place: 1)
+    @home_posts = @post.where(place: 0)
+    @shop_posts = @post.where(place: 1)
     @post = current_user.posts.new
   end
 
@@ -54,6 +55,14 @@ class PostsController < ApplicationController
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
     @posts = @tag.posts.all
+  end
+
+  def home_posts
+    @home_posts = Post.where(place: 0)
+  end
+
+  def shop_posts
+    @shop_posts = Post.where(place: 1)
   end
 
   private

@@ -5,6 +5,9 @@ resources :posts do
   resource :comments, only: [:create, :destroy]
 end
 
+get "/home_posts", to: "posts#home_posts"
+get "/shop_posts", to: "posts#shop_posts"
+
 devise_for :users, controllers: {
     sessions: "users/sessions",
     registrations: "users/registrations",
