@@ -1,0 +1,2 @@
+class RemoveIndexFromNotification < ApplicationRecord
+end

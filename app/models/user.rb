@@ -13,6 +13,7 @@ class User < ApplicationRecord
 
   attachment :profile_image
 
+#フォロー機能
   has_many :active_relationships, class_name: 'Relationship', foreign_key: :followed_id
   has_many :follows, through: :active_relationships, source: :follower
 

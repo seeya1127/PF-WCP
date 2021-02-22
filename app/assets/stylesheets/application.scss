@@ -29,6 +29,14 @@
   background-image: url(test4.jpg);
 }
 
-.full-page {
-  background-color: #FFFF99;
+.post-cards{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:flex-start;
+}
+.card-columns{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 20px;
+  width: 33.33333333%;
 }

@@ -3,31 +3,28 @@
 
 <% @tag_list.each do |list| %>
   <% if list.posts.count >= 1 %>
-  <span>
-    <%= link_to list.tag_name, tag_posts_path(tag_id: list.id) %>
-    <%= "(#{list.posts.count})" %>
-  </span>
+    <span>
+      <%= link_to list.tag_name, tag_posts_path(tag_id: list.id) %>
+      <%= "(#{list.posts.count})" %>
+    </span>
   <% end %>
 <% end %>
 
-<div class="title">
-    <h4>投稿一覧</h4>
-</div>
-
-
+<h4 style="margin-top:10px"><%= link_to "お家での投稿" ,home_posts_path %></h4>
   <div class="row">
-<% @home_posts.each do |post| %>
-<div class="col-md-3">
- <%= render 'post', post: post %>
-</div>
-<% end %>
+    <% @home_posts.first(4).each do |post| %>
+      <div class="col-md-3">
+       <%= render 'post', post: post %>
+      </div>
+    <% end %>
   </div>
 
+<h4><%= link_to "お店での投稿" ,shop_posts_path %></h4>
   <div class="row">
-<% @shop_posts.each do |post| %>
-<div class="col-md-3">
- <%= render 'post', post: post %>
-</div>
-<% end %>
+    <% @shop_posts.first(4).each do |post| %>
+      <div class="col-md-3">
+    <%= render 'post', post: post %>
+      </div>
+    <% end %>
   </div>
 </div>

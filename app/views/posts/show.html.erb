@@ -1,35 +1,44 @@
-<h2>投稿詳細</h2>
+<div class="container" style="padding:20px">
+ <div class="row">
+   <div class="col-1"></div>
+   <div class="col-5">
+  <h4>投稿詳細</h4>
 
-<h4>画像</h4>
-  <%= attachment_image_tag @post, :post_image, class: "post_image" %>
+  <div class="shadow-lg card border-secondary" style="height:100%">
+    <%= attachment_image_tag @post, :post_image, class: 'card-img-top' %>
 
-<h4>投稿内容</h4>
-  <%= @post.text %>
+    <%= link_to user_path(@post.user.id) do %>
+          <%= attachment_image_tag @post.user,:profile_image, size: "30x30", class:"rounded-circle" %> <%= @post.user.name %>
+          <% end %>
+    <%= render 'favorites/favorite', post: @post %>
 
-<% if @post.user == current_user %>
-<p><%= link_to "edit", edit_post_path(@post.id) %></p>
-<p><%= link_to "destroy", post_path(@post.id), method: :delete, data: {confirm:'本当に削除しますか？'} %></p>
-<% end %>
+    <div class="card-text">
+    <%= @post.text %>
+    <% if @post.user == current_user %>
+      <p><%= link_to "edit", edit_post_path(@post.id) %></p>
+      <p><%= link_to "destroy", post_path(@post.id), method: :delete, data: {confirm:'本当に削除しますか？'} %></p>
+    <% end %>
+    </div>
 
-<%= render 'favorites/favorite', post: @post %>
+    <% @post_tags.each do |tag| %>
+  <span>
+    タグ＃<%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>
+  </span>
+  <% end %>
+  </div>
 
-<h4>コメント</h4>
+  </div>
 
-<%= render 'comments/comment', comment: @comments %>
+  <div class="col-5" style="padding-top:35px">
+  <% if @post.spot.address? %>
+      <h5>住所：<%= @post.spot.address %></h5>
+    <div id="show_map" style="height: 320px; width: 400px;"></div>
+  <% end %>
 
-<h4>コメント一覧</h4>
-<%= render 'comments/form', post: @post, comment: @comment %>
-
-<h4>タグリスト</h4>
-<% @post_tags.each do |tag| %>
-<span>
-  <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>
-  <%= "(#{tag.posts.count})" %>
-</span>
-<% end %>
-
-<% if @post.spot.address? %>
-<h4>Map</h4>
-    <%= @post.spot.address %>
-  <div id="show_map" style="height: 320px; width: 400px;"></div>
-<% end %>
+  <h5 style="padding-top:20px">コメント</h5>
+  <%= render 'comments/comment', comment: @comments %>
+  <%= render 'comments/form', post: @post, comment: @comment %>
+  </div>
+  <div class="col-1"></div>
+  </div>
+</div>
