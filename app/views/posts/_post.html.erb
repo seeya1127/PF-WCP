@@ -2,7 +2,7 @@
     <div class="shadow-lg card border-secondary" style="width: 15rem;">
       <div class="card-img">
           <%= link_to post_path(post.id) do %>
-          <%= attachment_image_tag post, :post_image, class: 'card-img-top' %>
+          <%= attachment_image_tag post, :post_image, class: 'card-img-top', size:"200x200" %>
           <% end %>
       </div>
         <div class="card-title">

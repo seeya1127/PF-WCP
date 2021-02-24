@@ -3,7 +3,7 @@ class RelationshipsController < ApplicationController
    follow = current_user.active_relationships.new(follower_id: params[:user_id])
    follow.save
    @user = User.find(params[:user_id])
-   # @user.create_notification_follow(current_user)
+   @user.create_notification_follow!(current_user)
   end
 
   def destroy

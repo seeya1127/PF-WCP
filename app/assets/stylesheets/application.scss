@@ -17,16 +17,16 @@
   height: 700px;
 }
 .image1 {
-  background-image: url(sake.jpg);
+  background-image: image-url("sake.jpg");
 }
 .image2 {
-  background-image: url(beer.jpg);
+  background-image: image-url("beer.jpg");
 }
 .image3 {
-  background-image: url(whisky.jpg);
+  background-image: image-url("whisky.jpg");
 }
 .image4 {
-  background-image: url(wine.jpg);
+  background-image: image-url("wine.jpg");
 }
 
 .post-cards{
