@@ -1,0 +1,2 @@
+class RemoveIndexFromUser < ApplicationRecord
+end

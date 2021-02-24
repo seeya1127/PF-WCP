@@ -1,9 +1,9 @@
-<% comment.each do |comment| %>
+<% comments.each do |comment| %>
 
-  <p><%= comment.comment_text %></p>
-
+  <p><%= comment.comment_text %>
     <% if comment.user == current_user %>
-    <P><%= link_to "destroy", post_comments_path(post_id: comment.post, id: comment.id), method: :delete, remote: true, data: {confirm:'本当に削除しますか？'} %></P>
+     <%= link_to "destroy", post_comments_path(post_id: comment.post, id: comment.id), method: :delete,
+    remote: true, data: {confirm:'本当に削除しますか？'}, class:"btn btn-danger" %></P>
     <% end %>
-
+  </p>
 <% end %>

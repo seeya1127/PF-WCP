@@ -3,7 +3,6 @@
     <div class="col-md-2"></div>
 
     <div class="shadow-lg col-md-8" style="padding:10px">
-      <!--<div class="shadow-lg card" style="padding:15px">-->
     <%= form_with model: @post, local:true, multipart: true do |f| %>
     <h2>New Post</h2>
 
@@ -12,10 +11,10 @@
     <h4>本文</h4>
     <%= f.text_field :text, class: "col-md-12" %><br>
 
-        <%= f.radio_button :place_option, "0", checked: true %>
+        <%= f.radio_button :place, :お家, checked: true %>
         <%= f.label :place, "お家" %><br>
 
-        <%= f.radio_button :place_option, "1" %>
+        <%= f.radio_button :place, :お店 %>
         <%= f.label :place, "お店" %></br>
 
     <h4>住所</h4>
@@ -36,6 +35,5 @@
     <% end %>
     </div>
     <div class="col-md-2"></div>
-  <!--</div>-->
   </div>
 </div>

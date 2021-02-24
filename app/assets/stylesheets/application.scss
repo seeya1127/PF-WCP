@@ -14,21 +14,33 @@
  *= require_self
  */
  #box{
-  height: 600px;
+  height: 700px;
 }
-.test1 {
-  background-image: url(test1.jpg);
+.image1 {
+  background-image: image-url("sake.jpg");
 }
-.test2 {
-  background-image: url(test2.jpg);
+.image2 {
+  background-image: image-url("beer.jpg");
 }
-.test3 {
-  background-image: url(test3.jpg);
+.image3 {
+  background-image: image-url("whisky.jpg");
 }
-.test4 {
-  background-image: url(test4.jpg);
+.image4 {
+  background-image: image-url("wine.jpg");
 }
 
-.full-page {
-  background-color: #FFFF99;
+.post-cards{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:flex-start;
+}
+.card-columns{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 20px;
+  width: 33.33333333%;
+}
+
+body{
+  font-family: 'Shippori Mincho B1', serif;
 }

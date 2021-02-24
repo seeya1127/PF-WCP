@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-3"></div>
     <div class="col-6">
-      <table class="table table-border"></div>
+      <table class="table table-border">
         <tbody>
           <tr>
             <td>
@@ -21,16 +21,17 @@
                 <% when 'comment' then %>
                     <% if notification.post.user_id == visited.id %>
                       <%= link_to "あなたの投稿", notification.post, style: "font-weight: bold;" %>
+                      <%= "にコメントしました" %>
                     <% else %>
                         <%= link_to post_path(notification.post) do %>
                           <%= image_tag avatar_url(notification.post.user).to_s, class: "icon_mini" %>
                             <%= notification.post.user.name + 'さんの投稿' %>
-                    <%= "にコメントしました" %>
+                          <%= "にコメントしました" %>
                     <% end %>
                 <% end %>
               <% end %>
                 <p class="text-muted.mb-0">
-                  <%= Comment.find_by(id: notification.comment_id)&.comment %>
+                  <%= Comment.find_by(id: notification.comment_id)&.comment_text %>
                   </p>
             <div class="small.text-muted.text-right">
               <%= time_ago_in_words(notification.created_at).upcase %>
@@ -38,6 +39,8 @@
           </td>
          </tr>
         </tbody>
+      </table>
+      </div>
     <div class="col-3"></div>
   </div>
 </div>
