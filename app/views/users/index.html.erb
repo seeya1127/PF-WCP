@@ -1,7 +1,7 @@
-<h4>ユーザー一覧</h4>
 <div class="container-md" style="margin-top:15px">
     <div class="row">
         <div class="col-12">
+            <h4>Users</h4>
             <table class="table table-borderless">
             	<tbody>
             		<tr>
@@ -20,7 +20,7 @@
             			<td><%= user.name %></td>
             			<td><%= user.introduction %></td>
             			<% if current_user != user %>
-            			<td><%= render 'follow', user: user %></td>
+            			<td class="follow"><%= render 'follow', user: user %></td>
                         <td><%= link_to "チャットする", chat_path(user.id), class:"btn btn-info" %></td>
                         <% else %>
                         <td></td>
