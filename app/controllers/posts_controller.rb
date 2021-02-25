@@ -26,12 +26,13 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
-    tag_list = params[:post][:tag_name].split(nil)
+    @tag_list = params[:post][:tag_name].split(nil)
     if @post.save
-      @post.save_tag(tag_list)
-      redirect_to posts_path
+      @post.save_tag(@tag_list)
+      redirect_to posts_path, notice: '投稿に成功しました。'
     else
-      render "index"
+      flash.now[:alert] = '投稿が失敗しました。'
+      render "new"
     end
   end
 
