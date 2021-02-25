@@ -16,7 +16,7 @@
             		<% @users.each do |user| %>
             		<tr>
             		    <td><%= user.id %></td>
-            			<td><%= attachment_image_tag user, :profile_image, size: "30x30", fallback: "no_img.jpg" %></td>
+            			<td><%= image_tag user, :profile_image, size: "30x30", fallback: "no_img.jpg" %></td>
             			<td><%= user.name %></td>
             			<td><%= user.introduction %></td>
             			<% if current_user != user %>
