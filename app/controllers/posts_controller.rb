@@ -26,12 +26,17 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
-    tag_list = params[:post][:tag_name].split(nil)
+    @tag_list = params[:post][:tag_name].split(nil)
     if @post.save
-      @post.save_tag(tag_list)
-      redirect_to posts_path
+      @post.save_tag(@tag_list)
+      tags = Vision.get_image_data(@post.post_image)
+    tags.each do |tag|
+      @post.tags.create(tag_name: tag)
+    end
+      redirect_to posts_path, notice: '投稿に成功しました。'
     else
-      render "index"
+      flash.now[:alert] = '投稿が失敗しました。'
+      render "new"
     end
   end
 

@@ -10,6 +10,9 @@ class Post < ApplicationRecord
 
   attachment :post_image
 
+  validates :post_image, presence: true
+  validates :text, presence: true, length: { maximum: 50 }
+
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
@@ -65,17 +68,6 @@ class Post < ApplicationRecord
       visited_id: visited_id,
       action: 'comment'
     )
-
-  def create_notification_follow!(current_user)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
-    if temp.blank?
-      notification = current_user.active_notifications.new(
-        visited_id: id,
-        action: 'follow'
-      )
-      notification.save if notification.valid?
-    end
-  end
 
     if notification.visitor_id == notification.visited_id
       notification.checked = true

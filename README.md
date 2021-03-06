@@ -18,7 +18,8 @@
 お酒を飲んだ時、飲みたい時
 
 ## 設計書
-
+ER図　file:///Users/kuwahara/Downloads/PF-ER%E5%9B%B3.pdf
+テーブル定義書　https://docs.google.com/spreadsheets/d/16y6LebtMSrNUkoj_g7K4eZhgT7Kv5-e_1u4zXFCx6-s/edit?usp=sharing
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1cyhdEjKUPUSKbcfZNUVA1zvST2vuA2NdK2q4TlRKtRM/edit?usp=sharing
@@ -31,5 +32,17 @@ https://docs.google.com/spreadsheets/d/1cyhdEjKUPUSKbcfZNUVA1zvST2vuA2NdK2q4TlRK
 - IDE：Cloud9
 
 ## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+イラストAC　https://www.ac-illust.com/main/detail.php?id=1071775&word=%E6%97%A5%E6%9C%AC%E9%85%92&searchId=2188089286#
+pixabay https://pixabay.com/ja/
+パブリックドメインQ　https://publicdomainq.net/sake-sashimi-0020372/
+
+##機能一覧
+通知機能
+フォロー機能
+いいね機能
+コメント機能
+地図表示機能
+非同期化
+画像スライダー機能
+チャット機能（非同期）
+タグ付け機能
