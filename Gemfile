@@ -81,3 +81,5 @@ gem "pry-byebug"
 gem 'kaminari', '~> 0.17.0'
 
 gem 'jquery-turbolinks'
+
+gem 'google-cloud-vision', require: "google/cloud/vision"
