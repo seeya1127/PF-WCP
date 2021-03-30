@@ -44,5 +44,5 @@ function codeAddress(){ //コールバック関数
     } else {
       alert('該当する結果がありませんでした');
     }
-  });   
+  });
 }
