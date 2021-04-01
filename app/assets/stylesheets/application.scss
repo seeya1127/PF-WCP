@@ -13,9 +13,7 @@
  *= require_tree .
  *= require_self
  */
- #box{
-  height: 700px;
-}
+
 .image1 {
   background-image: image-url("sake.jpg");
 }
@@ -43,4 +41,61 @@
 
 body{
   font-family: 'Shippori Mincho B1', serif;
+}
+
+#box {
+  height: 750px;
+  position: relative;
+
+
+  .over-button {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+  }
+
+  .btn {
+    margin-left: 80px;
+  }
+
+  .title {
+    position: absolute;
+    color: white;
+    font-size: 100px;
+    top: 10%;
+    left: 13%;
+  }
+
+  .sub-title {
+    position: absolute;
+    color: white;
+    font-size: 40px;
+    top: 30%;
+    left: 13%;
+  }
+}
+
+.wrapper{
+    height: 100%;
+    min-height: 100vh;
+    position: relative;/*←相対位置*/
+    padding-bottom: 80px;/*←footerの高さ*/
+    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+
+    .container{
+    margin-left: 0px;
+    margin-right: 0px;
+    max-width: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+    }
+}
+
+footer{
+    width: 100%;
+    background-color: #FF8C00;
+    text-align: center;
+    padding: 30px 0;
+    position: absolute;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
 }

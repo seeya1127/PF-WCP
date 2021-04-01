@@ -6,10 +6,10 @@
     <%= form_with model: @post, local:true, multipart: true do |f| %>
     <h2>New Post</h2>
 
-    <h4>画像</h4>
+    <h4>画像(必須）</h4>
     <%= f.attachment_field :post_image, class: "input" %>
     <h4>本文</h4>
-    <%= f.text_field :text, class: "col-md-12" %><br>
+    <%= f.text_field :text, class: "col-md-12", placeholder:"入力必須（５０字まで）" %><br>
 
         <%= f.radio_button :place, :お家, checked: true %>
         <%= f.label :place, "お家" %><br>
@@ -20,20 +20,23 @@
     <h4>住所</h4>
         <%= f.fields_for :spot do |s| %>
 
-           <%= s.text_field :address, id: "address", class: "col-md-12" %>
+           <%= s.text_field :address, id: "address", class: "col-md-12",placeholder:"お店を選んだ場合は住所を入れましょう" %>
            <input onclick="codeAddress()", type="button", value="検索する", class="btn btn-primary" %></input>
-           <div id="map" style="height: 250px; width: mx-auto;"></div>
+           <div id="map" style="height: 200px; width: mx-auto;"></div>
 
         <% end %>
 
     <h4>タグ</h4>
     <P>
-    <%= f.text_field :tag_name, class: "col-md-12" %></P>
+    <%= f.text_field :tag_name, class: "col-md-12", placeholder:"例　#ビール"  %></P>
 
-    <%= f.submit '投稿', class: "col-md-12 btn btn-primary" %>
+    <%= f.submit '投稿', class: "col-md-12 btn btn-primary"%>
 
     <% end %>
     </div>
     <div class="col-md-2"></div>
   </div>
 </div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_KEY"] %>&callback=initMap" async defer></script>
+<script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js" async defer></script>

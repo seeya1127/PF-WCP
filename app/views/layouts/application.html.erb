@@ -14,9 +14,8 @@
   </head>
 
   <body class="full-page">
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_KEY"] %>&callback=initMap" async defer></script>
-    <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js" async defer></script>
-    <script src="//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js", type:"text/javascript" async defer></script>
+    <div class="wrapper">
+    <div class="container">
     <nav class="navbar navbar-expand-lg sticky-top" style="background-color:#FF8C00;">
       <div class="container-fluid">
         <a class="text-dark navbar-brand p-2">ALCOfollow</a>
@@ -49,7 +48,7 @@
                 <%= link_to "Home", root_path, class:"fas fa-home text-dark" %>
               </li>
               <li class="nav-item btn btn-warning">
-                <%= link_to "Signin", new_user_registration_path, class:"fas fa-user-plus text-dark" %>
+                <%= link_to "Signup", new_user_registration_path, class:"fas fa-user-plus text-dark" %>
               </li>
               <li class="nav-item btn btn-warning">
                 <%= link_to "Login", user_session_path, class:"fas fa-sign-out-alt text-dark" %>
@@ -61,5 +60,8 @@
         </div>
     </nav>
     <%= yield %>
+    <footer class="footer">©ALCOfollow︎</footer>
+    </div>
+    </div>
   </body>
 </html>
