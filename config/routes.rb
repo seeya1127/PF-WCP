@@ -27,5 +27,10 @@ resources :tags do
   get "posts", to: "posts#search"
 end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-resources :notifications, only: :index
+resources :notifications, only: [:index] do
+  collection do
+    delete :destroy_all
+  end
+end
+
 end
